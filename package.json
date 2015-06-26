@@ -1,7 +1,7 @@
 {
   "name": "ember-version-is",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Dead simple in browser Ember / Ember Data version checker.  Works with Ember Addons.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/hhff/ember-version-is.git",
   "engines": {
     "node": ">= 0.10.0"
   },

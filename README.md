@@ -1,25 +1,72 @@
-# Ember-version-is
+# Ember Version Is
 
-This README outlines the details of collaborating on this Ember addon.
+A super simple set of helpers designed to give Ember Addons a clean way of supporting multiple
+Ember & Ember Data versions.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```bash
+# In your Addon...
+npm install ember-version-is --save
+```
 
-## Running
+The in your Addon's `index.js`:
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```js
+/* jshint node: true */
+'use strict';
 
-## Running Tests
+module.exports = {
+  name: 'ember-infinity',
 
-* `ember test`
-* `ember test --server`
+  /* Necessary Hack until Ember CLI supports nested addons. */
+  included: function(app) {
+    this.addons.forEach(function(addon){
+      if (addon.name === "ember-version-is") {
+        addon.included.apply(addon, [app]);
+      }
+    });
+  }
+};
+```
 
-## Building
+## Usage
 
-* `ember build`
+Then anywhere in your codebase, you can do:
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+```js
+import Ember from 'ember';
+import { emberVersionIs, emberDataVersionIs } from 'ember-version-is';
+
+export default Ember.Route.extend({
+  model() {
+    let promise;
+    if (emberDataVersionIs('lessThanOrEqualTo', "1.13.0")) {
+      promise = this.store.find('product', 1); 
+    } else {
+      promise = this.store.query('product', 1);
+    }
+    return promise.then(response => {
+      if (emberVersionIs('equalTo', "2.0.0")) {
+        Ember.warn("You are using Ember 2.0.  That is rad.");
+      }
+    });
+  }
+});
+```
+
+If you'd like to check arbitary versions of things, you can do that too:
+
+```js
+import Ember from 'ember';
+import { is } from 'ember-version-is';
+
+export default Ember.Route.extend({
+  activate() {
+    const VERSION = '0.2.3';
+    if (is(VERSION, 'lessThanOrEqualTo', '0.2.5')) {
+      this.set('techno', 'is making a comeback');
+    }
+  }
+});
+```
