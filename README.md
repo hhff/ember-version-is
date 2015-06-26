@@ -6,7 +6,7 @@
 A super simple set of helpers designed to give Ember Addon developers a clean way of supporting multiple
 Ember & Ember Data versions.
 
-It's basically a wrapper thin wrapper on Semver.
+It's basically a thin wrapper on Semver.
 
 ## Installation
 
@@ -65,10 +65,10 @@ If you'd like to check arbitary versions of things, you can do that too:
 ```js
 import Ember from 'ember';
 import { is } from 'ember-version-is';
+const VERSION = '0.2.3';
 
 export default Ember.Route.extend({
   activate() {
-    const VERSION = '0.2.3';
     if (is(VERSION, 'lessThanOrEqualTo', '0.2.5')) {
       this.set('techno', 'is making a comeback');
     }
