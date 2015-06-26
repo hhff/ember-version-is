@@ -1,6 +1,6 @@
 {
   "name": "ember-version-is",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dead simple in browser Ember / Ember Data version checker.  Works with Ember Addons.",
   "directories": {
     "doc": "doc",
