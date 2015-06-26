@@ -1,7 +1,12 @@
 # Ember Version Is
 
-A super simple set of helpers designed to give Ember Addons a clean way of supporting multiple
+[![Build Status](https://travis-ci.org/hhff/ember-version-is.svg)](https://travis-ci.org/hhff/ember-version-is)
+[![npm version](https://badge.fury.io/js/ember-version-is.svg)](http://badge.fury.io/js/ember-version-is)
+
+A super simple set of helpers designed to give Ember Addon developers a clean way of supporting multiple
 Ember & Ember Data versions.
+
+It's basically a wrapper thin wrapper on Semver.
 
 ## Installation
 
@@ -10,7 +15,7 @@ Ember & Ember Data versions.
 npm install ember-version-is --save
 ```
 
-The in your Addon's `index.js`:
+Then in your Addon's `index.js`:
 
 ```js
 /* jshint node: true */
