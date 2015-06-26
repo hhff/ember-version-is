@@ -68,7 +68,7 @@ test('emberVersionIs works', function(assert) {
 });
 
 test('emberDataVersionIs works', function(assert) {
-  var result = emberDataVersionIs('greaterThan', '1.8.0');
+  var result = emberDataVersionIs('greaterThan', '0.0.9');
   assert.ok(result);
   
   result = emberDataVersionIs('lessThan', '3.8.0');
