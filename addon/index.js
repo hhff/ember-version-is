@@ -28,3 +28,4 @@ var emberDataVersionIs = function(operation, value) {
 };
 
 export { is, emberVersionIs, emberDataVersionIs };
+export default emberVersionIs;
