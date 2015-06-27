@@ -3,6 +3,11 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 var is = function(value, operation, version) {
+  if (arguments.length === 2 || Ember.isNone(version)) {
+    Ember.assert('range must be a valid semver range', semver.validRange(operation));
+    return semver.satisfies(value, operation);
+  }
+
   switch(operation) {
     case 'equalTo':
       return semver.eq(value, version);
