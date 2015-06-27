@@ -1,4 +1,5 @@
-import { is, emberVersionIs, emberDataVersionIs } from 'ember-version-is';
+import emberVersionIs from 'ember-version-is';
+import { is, emberDataVersionIs } from 'ember-version-is';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | Ember Version Is');
