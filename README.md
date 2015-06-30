@@ -41,7 +41,8 @@ Then anywhere in your codebase, you can do:
 
 ```js
 import Ember from 'ember';
-import { emberVersionIs, emberDataVersionIs } from 'ember-version-is';
+import emberVersionIs from 'ember-version-is';
+import { emberDataVersionIs } from 'ember-version-is';
 
 export default Ember.Route.extend({
   model() {
@@ -70,6 +71,23 @@ const VERSION = '0.2.3';
 export default Ember.Route.extend({
   activate() {
     if (is(VERSION, 'lessThanOrEqualTo', '0.2.5')) {
+      this.set('techno', 'is making a comeback');
+    }
+  }
+});
+```
+
+[SemVer ranges](https://github.com/npm/node-semver#ranges) are supported as
+well (works for `is`, `emberVersionIs` and `emberDataVersionIs`):
+
+```js
+import Ember from 'ember';
+import { is } from 'ember-version-is';
+const VERSION = '0.2.8';
+
+export default Ember.Route.extend({
+  activate() {
+    if (is(VERSION, '<= 0.2.5 || 0.2.8')) {
       this.set('techno', 'is making a comeback');
     }
   }
